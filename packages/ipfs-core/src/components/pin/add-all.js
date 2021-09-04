@@ -36,12 +36,12 @@ module.exports = ({ repo, codecs }) => {
         const { cid } = await resolvePath(repo, codecs, path)
 
         // verify that each hash can be pinned
-        const { reason } = await repo.pins.isPinnedWithType(cid, [PinTypes.recursive, PinTypes.direct])
+        // const { reason } = await repo.pins.isPinnedWithType(cid, [PinTypes.recursive, PinTypes.direct])
 
-        if (reason === 'recursive' && !recursive) {
+        // if (reason === 'recursive' && !recursive) {
           // only disallow trying to override recursive pins
-          throw new Error(`${cid} already pinned recursively`)
-        }
+          //throw new Error(`${cid} already pinned recursively`)
+        //}
 
         if (recursive) {
           await repo.pins.pinRecursively(cid, { metadata })
